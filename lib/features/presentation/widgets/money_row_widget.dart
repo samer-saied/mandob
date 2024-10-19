@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mandob_app/core/utils/app_colors.dart';
+import 'package:mandob_app/features/presentation/cubit/add_state.dart';
 
-import '../../data/models/fiat_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 
+import '../cubit/add_cubit.dart';
+
 class MoneyRow extends StatelessWidget {
-  final Fiatmodel fiat;
-  const MoneyRow({super.key, required this.fiat});
+  final int index;
+  final bool diabled;
+  const MoneyRow({super.key, required this.index, this.diabled = false});
 
   @override
   Widget build(BuildContext context) {
     final formatter = NumberFormat.currency(symbol: "");
+
     //('#,###');
-    final formattedNumber = formatter.format(fiat.getFiatTotal());
+    // final formattedNumber = formatter.format(fiat.getFiatTotal());
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -28,14 +34,24 @@ class MoneyRow extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: fiat.color.withOpacity(0.25),
+                    color: context
+                        .read<AddCubit>()
+                        .money
+                        .fiats[index]
+                        .color
+                        .withOpacity(0.25),
                   ),
                   height: 50,
                   child: Center(
                     child: Text(
-                      fiat.type.toString(),
+                      context
+                          .read<AddCubit>()
+                          .money
+                          .fiats[index]
+                          .type
+                          .toString(),
                       style: const TextStyle(
-                        fontSize: 22,
+                        fontSize: 18,
                         // fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -47,7 +63,7 @@ class MoneyRow extends StatelessWidget {
                 child: Text(
                   'X',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 18,
                     // fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -55,74 +71,53 @@ class MoneyRow extends StatelessWidget {
             ],
           ),
         ),
-        //////// First Package FormField Widget
-        Flexible(
-          flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 3),
-            child: SizedBox(
-              height: 50,
-              child: Center(
-                child: TextFormField(
-                  // controller: textController,
-                  initialValue: fiat.package.toString(),
-                  decoration: InputDecoration(
-                    hintText: fiat.package.toString(),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.grey.withOpacity(.50)),
-                    ),
-                  ),
-                  keyboardType: TextInputType.number,
-                  onChanged: (val) {
-                    print(val);
-                  },
-                  onSaved: (val) {
-                    print(val);
-                  },
-                  validator: (val) {
-                    print(val);
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
-        //////// Secand Package FormField Widget
+
+        // //////// Secand Package FormField Widget
         Flexible(
           flex: 1,
           child: SizedBox(
             height: 50,
             child: Center(
-              child: TextFormField(
-                // controller: textController,
-                initialValue: fiat.ref.toString(),
-                decoration: InputDecoration(
-                  hintText: fiat.ref.toString(),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey.withOpacity(.50)),
-                  ),
-                ),
-                keyboardType: TextInputType.number,
-                onChanged: (val) {
-                  print(val);
-                },
-                onSaved: (val) {
-                  print(val);
-                },
-                validator: (val) {
-                  print(val);
+              child: BlocBuilder<AddCubit, AddState>(
+                builder: (context, state) {
+                  return TextField(
+                    enabled: !diabled,
+                    controller: context.read<AddCubit>().controllers[index],
+                    decoration: const InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                        color: AppColors.grey,
+                      )),
+                      enabledBorder: UnderlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.number,
+                    onTap: () =>
+                        context.read<AddCubit>().controllers[index].selection =
+                            TextSelection(
+                                baseOffset: 0,
+                                extentOffset: context
+                                    .read<AddCubit>()
+                                    .controllers[index]
+                                    .value
+                                    .text
+                                    .length),
+                    onChanged: (val) {
+                      if (val.isEmpty) {
+                        context.read<AddCubit>().editTransaction(index, 0);
+                      } else {
+                        context
+                            .read<AddCubit>()
+                            .editTransaction(index, int.parse(val));
+                      }
+                    },
+                  );
                 },
               ),
+              // }
             ),
           ),
         ),
+
         //////// Total Widget with = sign  example: = 6,767.00
         Flexible(
           flex: 1,
@@ -134,15 +129,29 @@ class MoneyRow extends StatelessWidget {
                   padding: EdgeInsets.all(3.0),
                   child: Text(
                     '=',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 18),
                   ),
                 ),
-                Text(
-                  formattedNumber,
-                  style: const TextStyle(
-                    // fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
+                BlocBuilder<AddCubit, AddState>(
+                  builder: (context, state) {
+                    return Text(
+                      formatter.format(int.parse(context
+                                      .read<AddCubit>()
+                                      .controllers[index]
+                                      .text ==
+                                  ""
+                              ? "0"
+                              : context
+                                  .read<AddCubit>()
+                                  .controllers[index]
+                                  .text) *
+                          context.read<AddCubit>().money.fiats[index].type),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

@@ -5,13 +5,17 @@ import '../utils/app_text_style.dart';
 
 ThemeData getAppTheme() {
   return ThemeData(
-      primaryColor: AppColors.primary,
-      //scaffoldBackgroundColor
+      primaryColor: AppColors.red,
       scaffoldBackgroundColor: AppColors.white,
       //appBar theme
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.primary,
-      ),
+          color: AppColors.black,
+          iconTheme: IconThemeData(
+            color: AppColors.white,
+          ),
+          actionsIconTheme: IconThemeData(
+            color: AppColors.white,
+          )),
       //text theme
       textTheme: TextTheme(
         displayLarge: boldStyle(),
@@ -20,7 +24,12 @@ ThemeData getAppTheme() {
       //button theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColors.red,
+          iconColor: AppColors.white,
+          textStyle: const TextStyle(
+            color: AppColors.white,
+            fontWeight: FontWeight.bold,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -38,9 +47,6 @@ ThemeData getAppTheme() {
         errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         //hint
         hintStyle: boldStyle(color: AppColors.grey, fontSize: 16),
-        //fill color
-        // fillColor: AppColors.lightBlack,
-        // filled: true,
       ),
       textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(

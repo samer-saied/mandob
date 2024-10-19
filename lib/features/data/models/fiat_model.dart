@@ -1,29 +1,37 @@
 import 'package:flutter/material.dart';
 
 class Fiatmodel {
-  final int package;
-  final int ref;
+  int ref;
   final int type;
   final Color color;
 
   Fiatmodel({
-    required this.package,
     required this.ref,
     required this.type,
     required this.color,
   });
 
   factory Fiatmodel.fromJson(Map<String, dynamic> json) {
+    // print(Color(json["color"]));
     return Fiatmodel(
-      package: json["package"],
       ref: json["ref"],
       type: json["type"],
-      color: Color(int.parse(json["color"])),
+      color: Color(json["color"]),
+      // Color(int.parse(json["color"])),
     );
   }
 
+  Map<String, dynamic> toJson() {
+    // print(color.hashCode);
+    return {
+      "ref": ref,
+      "type": type,
+      "color": color.value,
+    };
+  }
+
   int getFiatTotal() {
-    return ((package * 100) + ref) * type;
+    return ref * type;
   }
 }
 

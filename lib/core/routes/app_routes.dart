@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:mandob_app/features/presentation/screens/home_screen.dart';
+import 'package:mandob_app/features/presentation/screens/summary_screen.dart';
 
-import '../../features/presentation/screens/home_screen.dart';
+import '../../features/presentation/screens/add_transaction_screen.dart';
+import '../../features/presentation/screens/transaction_screen.dart';
 
 class Routes {
-  static const String intitlRoute = '/';
-  static const String changeLang = '/changeLang';
-  static const String login = '/login';
-  static const String sendCode = '/sendCode';
-  static const String restPassword = '/restPassword';
-  static const String menuHome = '/menuHome';
-  static const String addMeal = '/addMeal';
-  static const String profileHome = '/profileHome';
-  static const String updateProfile = '/updateProfile';
-  static const String setting = '/setting';
-  static const String changePassword = '/changePassword';
-  static const String home = '/home';
+  static const String intitlRoute = '/home';
+  // static const String changeLang = '/changeLang';
+  // static const String login = '/login';
+  // static const String sendCode = '/sendCode';
+  // static const String restPassword = '/restPassword';
+  // static const String menuHome = '/menuHome';
+  // static const String addMeal = '/addMeal';
+  // static const String profileHome = '/profileHome';
+  // static const String updateProfile = '/updateProfile';
+  // static const String setting = '/setting';
+  static const String summary = '/summary';
+  static const String transaction = '/transaction';
+  static const String add = '/add';
 }
 
 class AppRoutes {
@@ -45,12 +49,22 @@ class AppRoutes {
       //   return MaterialPageRoute(builder: (_) => const SettingsScreen());
       // case Routes.changePassword:
       //   return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
-
-      case Routes.home:
+      case Routes.intitlRoute:
         return MaterialPageRoute(
-            builder: (_) => const MyHomePage(
-                // title: 'Home Page',
-                ));
+            builder: (_) => const HomeScreen(), settings: routeSettings);
+
+      case Routes.transaction:
+        return MaterialPageRoute(
+            builder: (_) => const TransactionPage(), settings: routeSettings);
+
+      case Routes.summary:
+        return MaterialPageRoute(
+            builder: (_) => const SummaryPage(), settings: routeSettings);
+
+      case Routes.add:
+        return MaterialPageRoute(
+            builder: (_) => const AddTransactionPage(),
+            settings: routeSettings);
 
       default:
         return MaterialPageRoute(

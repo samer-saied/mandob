@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.4.1 <4.0.0'
 
 dependencies:
+  bloc: ^8.1.4
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
   dio: ^5.7.0
@@ -20,6 +21,7 @@ dependencies:
   google_fonts: ^6.2.1
   image_picker: ^1.1.2
   shared_preferences: ^2.3.2
+  sqflite: ^2.3.3+1
 
 dev_dependencies:
   flutter_lints: ^3.0.0
