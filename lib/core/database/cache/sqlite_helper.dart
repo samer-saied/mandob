@@ -38,7 +38,16 @@ class DatabaseHelper {
     ''');
   }
 
-  static Future<void> insertOneTransaction(Moneymodel money) async {}
+  static Future<void> insertOneTransaction(Moneymodel money) async {
+    final db = await database;
+    if (db != null) {
+      await db.insert(
+        'transactions',
+        money.toJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+    }
+  }
 
   static Future<void> deleteData(int id) async {
     try {

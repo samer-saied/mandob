@@ -10,6 +10,7 @@ class SummaryCubit extends Cubit<SummaryState> {
   Future<void> getAllSummaryReports() async {
     emit(SummaryLoading());
     List<Moneymodel> transactions = await DatabaseHelper.queryTransactions();
+    print(transactions);
     emit(SummaryLoaded(transactions: transactions));
   }
 }

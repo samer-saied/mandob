@@ -47,6 +47,7 @@ class AddCubit extends Cubit<AddState> {
   Future<void> addNewTransaction(bool type) async {
     emit(AddLoadingState());
     money.transactionsType = type;
+    print(money.createdDate);
     await DatabaseHelper.insertOneTransaction(money);
     resetData();
     emit(AddLoadedState(money: money));
