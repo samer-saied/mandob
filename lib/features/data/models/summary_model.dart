@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:mandob_app/features/data/models/money_model.dart';
 
-import 'fiat_model.dart';
-
 class SummaryModel {
   List<Moneymodel> transactions;
   double credits;

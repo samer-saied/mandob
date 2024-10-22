@@ -1,4 +1,3 @@
-import '../../data/models/money_model.dart';
 import '../../data/models/summary_model.dart';
 
 final class SummaryState {}
