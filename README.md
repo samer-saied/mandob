@@ -5,7 +5,7 @@ clean architecture - flutter app - cubit/Bloc - dio - sharedRef - OPP - solid pr
 
 ## Getting Started
 
-clean architecture flutter app  to sales rep who needs to calculate money fiats and save every transaction to resore them later
+clean architecture flutter app  to sales rep who needs to calculate money fiats and save every transaction and restore them later
 
 | ShotScreen #  | ShotScreen # |
 | ------------- | ------------- |
