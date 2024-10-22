@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:mandob_app/features/presentation/cubit/summary_state.dart';
 
 import '../../../core/database/cache/sqlite_helper.dart';
 import '../../data/models/fiat_model.dart';
@@ -47,16 +48,9 @@ class AddCubit extends Cubit<AddState> {
   Future<void> addNewTransaction(bool type) async {
     emit(AddLoadingState());
     money.transactionsType = type;
-    print(money.createdDate);
     await DatabaseHelper.insertOneTransaction(money);
     resetData();
     emit(AddLoadedState(money: money));
-  }
-
-  Future<void> deleteTransaction(int id) async {
-    emit(DeleteLoadingState());
-    await DatabaseHelper.deleteData(id);
-    emit(DeleteLoadedState());
   }
 
   setHistoryTransaction(Moneymodel historyMoney) {

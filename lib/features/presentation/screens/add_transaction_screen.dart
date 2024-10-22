@@ -29,7 +29,7 @@ class AddTransactionPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: type ? AppColors.primary : AppColors.red,
         title: Text(
-          type ? "+ Debit" : "- Credit",
+          type ? "+ Credit" : "- Debit",
           style: const TextStyle(
             color: Colors.white,
             fontSize: 24,

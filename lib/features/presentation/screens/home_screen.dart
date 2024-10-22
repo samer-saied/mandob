@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             children: <Widget>[
               MainButton(
                 icon: Icons.add_circle_outlined,
-                text: "Debit",
+                text: "Credit",
                 color: AppColors.primary,
                 onTap: () {
                   Navigator.pushNamed(context, '/add', arguments: true);
@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               ),
               MainButton(
                 icon: Icons.remove_circle,
-                text: "Credit",
+                text: "Debit",
                 color: AppColors.red,
                 onTap: () {
                   Navigator.pushNamed(context, '/add', arguments: false);
@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                 text: "Daily",
                 color: AppColors.purple,
                 onTap: () {
-                  Navigator.pushNamed(context, '/summary');
+                  Navigator.pushNamed(context, '/today_summary');
                 },
               ),
               MainButton(

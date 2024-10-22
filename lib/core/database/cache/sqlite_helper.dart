@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:mandob_app/features/data/models/money_model.dart';
+import 'package:mandob_app/features/data/models/summary_model.dart';
 import 'package:sqflite/sqflite.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as path;
@@ -67,15 +68,32 @@ class DatabaseHelper {
   }
 
   // static Future<List<Map<String, dynamic>>> queryTransactions() async {
-  static Future<List<Moneymodel>> queryTransactions() async {
+  static Future<SummaryModel> queryTodayTransactions() async {
     List<Moneymodel> transactionsTemp = [];
+    double credits = 0.0;
+    double debits = 0.0;
     Database? db = await database;
-    List<Map<String, dynamic>> transactions = await db!.query('transactions');
+    String today = (DateTime.now().toString().split(" ")[0]);
+    List<Map<String, dynamic>> transactions = await db!.query(
+      'transactions',
+      where: 'createdDate > ?',
+      whereArgs: [today],
+    );
 
     for (var element in transactions) {
-      transactionsTemp.add(Moneymodel.fromJson(element));
+      Moneymodel tempMoney = Moneymodel.fromJson(element);
+      transactionsTemp.add(tempMoney);
+      if (tempMoney.transactionsType == true) {
+        credits += tempMoney.getTotalAll();
+      } else {
+        debits += tempMoney.getTotalAll();
+      }
     }
 
-    return transactionsTemp;
+    return SummaryModel(
+      transactions: transactionsTemp,
+      credits: credits,
+      debits: debits,
+    );
   }
 }
