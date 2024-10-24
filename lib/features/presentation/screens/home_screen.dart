@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mandob_app/core/utils/app_colors.dart';
+import 'package:mandob_app/core/utils/commons.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                 text: "Reports",
                 color: AppColors.black,
                 onTap: () {
-                  Navigator.pushNamed(context, '/summary');
+                  Navigator.pushNamed(context, '/weekly_summary');
                 },
               ),
             ],

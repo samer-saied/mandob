@@ -14,9 +14,6 @@ void initServiceLoactor() {
   sl.registerLazySingleton(() => GlobalCubit());
   sl.registerLazySingleton(() => SummaryCubit());
   sl.registerLazySingleton(() => AddCubit());
-  // sl.registerLazySingleton(() => ForgetPasswordCubit(sl()));
-  // sl.registerLazySingleton(() => HomeCubit());
-  // sl.registerLazySingleton(() => MenuCubit(sl()));
 
 //auth feature
   // sl.registerLazySingleton(() => AuthRepository());

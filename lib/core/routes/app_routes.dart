@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mandob_app/features/presentation/screens/home_screen.dart';
 import 'package:mandob_app/features/presentation/screens/summary_today_screen.dart';
+import 'package:mandob_app/features/presentation/screens/summary_weekly_screen.dart';
 
 import '../../features/presentation/screens/add_transaction_screen.dart';
 import '../../features/presentation/screens/transaction_screen.dart';
@@ -17,6 +18,7 @@ class Routes {
   // static const String updateProfile = '/updateProfile';
   // static const String setting = '/setting';
   static const String today = '/today_summary';
+  static const String weekly = '/weekly_summary';
   static const String transaction = '/transaction';
   static const String add = '/add';
 }
@@ -24,34 +26,14 @@ class Routes {
 class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      // case Routes.intitlRoute:
-      //   return MaterialPageRoute(builder: (_) => const SplashScreen());
-
-      // case Routes.changeLang:
-      //   return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
-      // case Routes.login:
-      //   return MaterialPageRoute(builder: (_) => const LoginScreen());
-      // case Routes.sendCode:
-      //   return MaterialPageRoute(builder: (_) => const SendCodeScreen());
-      // case Routes.restPassword:
-      //   return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
-
-      // case Routes.menuHome:
-      //   return MaterialPageRoute(builder: (_) => const MenuHomeScreen());
-      // case Routes.addMeal:
-      //   return MaterialPageRoute(builder: (_) => const AddMealScreen());
-
-      // case Routes.profileHome:
-      //   return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      // case Routes.updateProfile:
-      //   return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
-      // case Routes.setting:
-      //   return MaterialPageRoute(builder: (_) => const SettingsScreen());
-      // case Routes.changePassword:
-      //   return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
       case Routes.intitlRoute:
         return MaterialPageRoute(
             builder: (_) => const HomeScreen(), settings: routeSettings);
+
+      case Routes.add:
+        return MaterialPageRoute(
+            builder: (_) => const AddTransactionPage(),
+            settings: routeSettings);
 
       case Routes.transaction:
         return MaterialPageRoute(
@@ -61,10 +43,9 @@ class AppRoutes {
         return MaterialPageRoute(
             builder: (_) => const SummaryTodayPage(), settings: routeSettings);
 
-      case Routes.add:
+      case Routes.weekly:
         return MaterialPageRoute(
-            builder: (_) => const AddTransactionPage(),
-            settings: routeSettings);
+            builder: (_) => const SummaryWeeklyPage(), settings: routeSettings);
 
       default:
         return MaterialPageRoute(

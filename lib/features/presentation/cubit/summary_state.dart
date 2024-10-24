@@ -11,3 +11,11 @@ final class SummaryLoaded extends SummaryState {
 
   SummaryLoaded({required this.transactions});
 }
+
+final class ChangeDateLoading extends SummaryState {}
+
+final class ChangeDateLoaded extends SummaryState {
+  final DateTime date;
+
+  ChangeDateLoaded({required this.date});
+}

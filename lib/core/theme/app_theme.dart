@@ -5,7 +5,7 @@ import '../utils/app_text_style.dart';
 
 ThemeData getAppTheme() {
   return ThemeData(
-      primaryColor: AppColors.red,
+      primaryColor: AppColors.black,
       scaffoldBackgroundColor: AppColors.white,
       //appBar theme
       appBarTheme: const AppBarTheme(
@@ -24,7 +24,7 @@ ThemeData getAppTheme() {
       //button theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.red,
+          backgroundColor: AppColors.white,
           iconColor: AppColors.white,
           textStyle: const TextStyle(
             color: AppColors.white,

@@ -96,4 +96,37 @@ class DatabaseHelper {
       debits: debits,
     );
   }
+
+  static Future<SummaryModel> queryPeriodTransactions(
+      DateTime startDate, DateTime endDate) async {
+    List<Moneymodel> transactionsTemp = [];
+    double credits = 0.0;
+    double debits = 0.0;
+    Database? db = await database;
+
+    List<Map<String, dynamic>> transactions = await db!.query(
+      'transactions',
+      where: 'createdDate > ? and createdDate < ?',
+      whereArgs: [
+        startDate.toString().split(" ")[0],
+        endDate.toString().split(" ")[0]
+      ],
+    );
+
+    for (var element in transactions) {
+      Moneymodel tempMoney = Moneymodel.fromJson(element);
+      transactionsTemp.add(tempMoney);
+      if (tempMoney.transactionsType == true) {
+        credits += tempMoney.getTotalAll();
+      } else {
+        debits += tempMoney.getTotalAll();
+      }
+    }
+
+    return SummaryModel(
+      transactions: transactionsTemp,
+      credits: credits,
+      debits: debits,
+    );
+  }
 }

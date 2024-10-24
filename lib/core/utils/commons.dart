@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -68,4 +69,17 @@ Future<XFile?> pickImage(ImageSource source) async {
 Future uploadImageToAPI(XFile image) async {
   return MultipartFile.fromFileSync(image.path,
       filename: image.path.split('/').last);
+}
+
+selectDate(BuildContext context, DateTime? selectedDate) async {
+  // final CupertinoDatePicker picked =
+  //     context: context,
+  //     initialDate: selectedDate,
+  //     firstDate: DateTime(2015, 8),
+  //     lastDate: DateTime(2101));
+  // if (picked != null && picked != selectedDate) {
+  //   // setState(() {
+  //   selectedDate = picked;
+  //   // });
+  // );
 }
