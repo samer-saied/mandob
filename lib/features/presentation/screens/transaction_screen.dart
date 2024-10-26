@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mandob_app/core/utils/app_colors.dart';
-import 'package:mandob_app/features/presentation/cubit/add_cubit.dart';
 
+import '../../../core/utils/app_colors.dart';
 import '../../data/models/money_model.dart';
+import '../cubit/add_cubit.dart';
 import '../widgets/money_row_widget.dart';
 import '../widgets/total_all_widget.dart';
 // ignore: depend_on_referenced_packages

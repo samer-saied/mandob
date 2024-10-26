@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:mandob_app/features/data/models/summary_model.dart';
 
 import '../../../core/database/cache/sqlite_helper.dart';
+import '../../data/models/summary_model.dart';
 import 'summary_state.dart';
 
 class SummaryCubit extends Cubit<SummaryState> {

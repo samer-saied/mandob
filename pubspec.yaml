@@ -1,10 +1,10 @@
-name: mandob_app
+name: money_wizard
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.1 <4.0.0'
+  sdk: ">=3.4.1 <4.0.0"
 
 dependencies:
   bloc: ^8.1.4
@@ -25,11 +25,12 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^3.0.0
+  flutter_native_splash: ^2.4.1
   flutter_test:
     sdk: flutter
 
 flutter:
   uses-material-design: true
   assets:
-    # - assets/images
+    - assets/images/
     - assets/translations/

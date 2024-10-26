@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mandob_app/features/presentation/cubit/add_cubit.dart';
-import 'package:mandob_app/features/presentation/cubit/summary_cubit.dart';
 
+import '../../features/presentation/cubit/add_cubit.dart';
+import '../../features/presentation/cubit/summary_cubit.dart';
 import '../bloc/cubit/global_cubit.dart';
 import '../database/api/api_consumer.dart';
 import '../database/api/dio_consumer.dart';

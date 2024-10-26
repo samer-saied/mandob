@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mandob_app/core/utils/app_colors.dart';
-import 'package:mandob_app/features/presentation/cubit/add_state.dart';
 
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 
+import '../../../core/utils/app_colors.dart';
 import '../cubit/add_cubit.dart';
+import '../cubit/add_state.dart';
 
 class MoneyRow extends StatelessWidget {
   final int index;

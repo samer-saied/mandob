@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mandob_app/features/presentation/screens/home_screen.dart';
 
 import '../core/bloc/cubit/global_cubit.dart';
 import '../core/bloc/cubit/global_state.dart';
 import '../core/locale/app_locale.dart';
 import '../core/routes/app_routes.dart';
 import '../core/theme/app_theme.dart';
+import '../features/presentation/screens/home_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             ],
             locale: const Locale('en', "US"),
 
-            title: 'Mandob',
+            title: 'Money Wizard',
             home: const HomeScreen(),
             debugShowCheckedModeBanner: false,
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mandob_app/core/routes/app_routes.dart';
-import 'package:mandob_app/core/utils/app_colors.dart';
-import 'package:mandob_app/core/utils/commons.dart';
-import 'package:mandob_app/features/presentation/cubit/add_cubit.dart';
-import 'package:mandob_app/features/presentation/cubit/add_state.dart';
 
+import '../../../core/routes/app_routes.dart';
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/commons.dart';
+import '../cubit/add_cubit.dart';
+import '../cubit/add_state.dart';
 import '../widgets/money_row_widget.dart';
 
 import '../widgets/total_all_widget.dart';

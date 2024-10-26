@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mandob_app/features/presentation/screens/home_screen.dart';
-import 'package:mandob_app/features/presentation/screens/summary_today_screen.dart';
-import 'package:mandob_app/features/presentation/screens/summary_weekly_screen.dart';
 
 import '../../features/presentation/screens/add_transaction_screen.dart';
+import '../../features/presentation/screens/home_screen.dart';
+import '../../features/presentation/screens/summary_today_screen.dart';
+import '../../features/presentation/screens/summary_weekly_screen.dart';
 import '../../features/presentation/screens/transaction_screen.dart';
 
 class Routes {

@@ -1,10 +1,11 @@
 import 'dart:developer';
 
-import 'package:mandob_app/features/data/models/money_model.dart';
-import 'package:mandob_app/features/data/models/summary_model.dart';
 import 'package:sqflite/sqflite.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart' as path;
+
+import '../../../features/data/models/money_model.dart';
+import '../../../features/data/models/summary_model.dart';
 
 class DatabaseHelper {
   static const _databaseName = 'money_db.db';
